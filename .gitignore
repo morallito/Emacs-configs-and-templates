@@ -1,0 +1,6 @@
+# ignoring emacs caches and compilation outputs
+
+*.org~
+*.tex
+*.pdf
+*.tex~
