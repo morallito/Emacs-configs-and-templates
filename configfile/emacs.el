@@ -7,6 +7,11 @@
 
 ; Enable org mode 
 (require 'org-id)
+
+;; Make Org mode work with files ending in .org
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+;; The above is the default in recent emacsen
+
 ; Function to auto set up Id insubmodules
 (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
 (defun eos/org-custom-id-get (&optional pom create prefix)
@@ -48,3 +53,29 @@
   (find-file my-org-file)
   (goto-char pos-inside-my-table)
   (org-table-export my-org-table-saved-file))
+
+
+
+;; LaTex configurations and beamer mode
+;; -*- mode: elisp -*-
+
+;; Disable the splash screen (to enable it agin, replace the t with 0)
+(setq inhibit-splash-screen t)
+
+;; Enable transient mark mode
+(transient-mark-mode 1)
+
+;; Spell checking flyspell-mode
+(dolist (hook '(text-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode 1))))
+
+
+;; Add some configs to enable exporting in beammer:
+
+(require 'ox-latex)
+(add-to-list 'org-latex-classes
+             '("beamer"
+               "\\documentclass\[presentation\]\{beamer\}"
+               ("\\section\{%s\}" . "\\section*\{%s\}")
+               ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
+               ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
