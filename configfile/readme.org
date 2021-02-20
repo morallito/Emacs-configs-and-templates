@@ -1,0 +1,11 @@
+* My Emacs con fig file 
+
+This file ends up Will .el to allow syntax highlighting  on it.
+
+
+
+* Set up Emacs with this configfile 
+
+** Download the .emacs.el file, copy it to ~/.emacs.el. 
+
+** Restart you emacs and see if the numbr lines shows up, if so the configfile worked.  
