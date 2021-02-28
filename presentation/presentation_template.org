@@ -1,0 +1,104 @@
+#+TITLE:     Beamer Presentation template
+#+AUTHOR:    Iago H. Moreira
+#+EMAIL:     -
+#+DATE:      Febuary 28th 2021
+#+OPTIONS: H:2 toc:t num:t
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation]
+#+latex_header: \AtBeginSection[]{\begin{frame}<beamer>\frametitle{Topic}\tableofcontents[currentsection]\end{frame}}
+#+BEAMER_THEME: Ilmenau
+#+COLUMNS: %45ITEM %10BEAMER_ENV(Env) %10BEAMER_ACT(Act) %4BEAMER_COL(Col)
+
+* Module 1 
+
+** Example 
+
+
+** Example of a list 
+
+#+ATTR_BEAMER: :overlay +-
+- Item 1
+- Item 2
+- Item 3
+
+* Module 2 - Iamges
+** This is how to insert an image
+#+ATTR_LaTeX: :width 0.8\textwidth
+#+CAPTION: This is the caption for the next figure link (or table)
+[[./cat_at_work.jpg]]
+
+** This is how to insert an image 2
+
+#+ATTR_LaTeX: :width 0.8\textwidth
+#+CAPTION: This is the caption for the next figure link (or table)
+[[./cat_at_work.jpg]]
+
+* Module 3 using babel
+
+** Babel
+   :PROPERTIES:
+   :BEAMER_envargs: [t]
+   :END:
+*** Octave code						      :BMCOL:B_block:
+    :PROPERTIES:
+    :BEAMER_col: 0.45
+    :BEAMER_env: block
+    :END:
+#+name: octaveexample
+#+begin_src octave :results output :exports both
+A = [1 2 ; 3 4]
+b = [1; 1];
+x = A\b
+#+end_src
+
+*** The output						      :BMCOL:B_block:
+    :PROPERTIES:
+    :BEAMER_col: 0.4
+    :BEAMER_env: block
+    :BEAMER_envargs: <2->
+    :END:
+
+#+results: octaveexample
+#+begin_example
+A =
+
+   1   2
+   3   4
+
+x =
+
+  -1
+   1
+
+#+end_example
+
+
+
+* Module 4 - Matrix and tables
+
+
+** math and matrix
+#+ATTR_LATEX: :mode math :environment bmatrix :math-suffix = \Theta
+| a | b |
+| c | d |
+
+
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix  \omega = 
+| a | b |
+| c | d |
+
+
+
+
+** Simple table with some math components 
+
+
+#+ATTR_LATEX: :caption  \caption{A table with some units} 
+| Item 1  | length | higth | unit     |
+|---------+--------+-------+----------|
+| Square  | 3      | 2     | 6m^2     |
+| Tension | -      | -     | 5 \Omega |
+
+
+All table parameters can be found [[https://orgmode.org/manual/Tables-in-LaTeX-export.html][\color{blue}\textit{here}.]]
+

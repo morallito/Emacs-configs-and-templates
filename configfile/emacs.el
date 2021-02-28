@@ -71,7 +71,7 @@
 
 
 ;; Add some configs to enable exporting in beammer:
-
+;; Remember to install latex with beamer 
 (require 'ox-latex)
 (add-to-list 'org-latex-classes
              '("beamer"

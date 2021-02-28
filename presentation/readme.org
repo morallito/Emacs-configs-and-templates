@@ -1,0 +1,5 @@
+* Presentation template 
+
+
+The presentation template is a beamer example of LaTex beamer presentations.
+
