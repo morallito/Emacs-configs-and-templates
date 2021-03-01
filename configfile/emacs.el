@@ -73,6 +73,8 @@
 ;; Add some configs to enable exporting in beammer:
 ;; Remember to install latex with beamer 
 (require 'ox-latex)
+;; Require org meamer to compile the file
+(require 'ox-beamer)
 (add-to-list 'org-latex-classes
              '("beamer"
                "\\documentclass\[presentation\]\{beamer\}"
