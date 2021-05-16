@@ -1,0 +1,38 @@
+* Org drill types                                               
+** Simple topics
+The simplest drill topic has no special structure. When such a topic
+is presented during a drill session, any subheadings are "collapsed"
+with their contents hidden. So, you could include the question as text
+beneath the main heading, and the answer within asubheading.
+
+** Cloze deletion 
+Cloze deletion can be used in any drill topic regardless of whether it
+is otherwise 'simple', or is one of the specialised topic types
+discussed below. To use cloze deletion, one or more parts of the body
+of the topic is marked as cloze text by surrounding it with single
+square brackets, [like so]. When the topic is presented for review,
+the text within square brackets will be obscured.
+
+** Clozed text hints
+Clozed text can contain a "hint" about the answer. If the text
+surrounded by single square brackets contains || (two vertical bars),
+all text after that character is treated as a hint. During testing,
+the hint text will be visible when the rest of the text is hidden, and
+invisible when the rest of the text is visible.
+
+
+* Item Simple Topics :drill:
+
+What is the answer?
+** Item 1
+This is a answer for a simple topic.
+
+
+* Item Close deletion :drill:
+ 
+This is a [hiden] close.     
+
+* Item Closed text hints :drill:
+ 
+Type 1 hypersensitivity reactions are mediated by [immunoglobulin
+E||molecule] and [mast cells||cell type].
