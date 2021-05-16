@@ -1,18 +1,14 @@
 ;; Iago Moreira emacs config file
-; V0.0.1 - 20-02-2021
+; V0.0.2 - 16-05-2021
 
 
-; Configure Emacs to display the line numbers on the left side always
-(global-display-line-numbers-mode t)
+(global-display-line-numbers-mode)
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
 
-; Enable org mode 
 (require 'org-id)
-
-;; Make Org mode work with files ending in .org
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-;; The above is the default in recent emacsen
-
-; Function to auto set up Id insubmodules
 (setq org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
 (defun eos/org-custom-id-get (&optional pom create prefix)
   "Get the CUSTOM_ID property of the entry at point-or-marker POM.
@@ -37,10 +33,6 @@
    current file which do not already have one."
   (interactive)
   (org-map-entries (lambda () (eos/org-custom-id-get (point) 'create))))
-
-
-;; Org Babel languages - load languages to be used in org mode
-; ATENTION - You python default sys version should have all tools needed
 (org-babel-do-load-languages
  'org-babel-load-languages
  '(
@@ -48,36 +40,35 @@
    )
  )
 
-; Org mode links in the table
 (defun my-export-batch-function (my-org-file pos-inside-my-table my-org-table-saved-file)
   (find-file my-org-file)
   (goto-char pos-inside-my-table)
   (org-table-export my-org-table-saved-file))
 
+(setq org-plantuml-jar-path (expand-file-name "~/.emacs.d/plantuml/plantuml.jar"))
+(add-to-list 'org-src-lang-modes '("plantuml" . plantuml))
+(org-babel-do-load-languages 'org-babel-load-languages '((plantuml . t)))
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 
+(use-package graphviz-dot-mode
+  :ensure t
+  :config
+  (setq graphviz-dot-indent-width 4))
 
-;; LaTex configurations and beamer mode
-;; -*- mode: elisp -*-
-
-;; Disable the splash screen (to enable it agin, replace the t with 0)
-(setq inhibit-splash-screen t)
-
-;; Enable transient mark mode
-(transient-mark-mode 1)
-
-;; Spell checking flyspell-mode
-(dolist (hook '(text-mode-hook))
-  (add-hook hook (lambda () (flyspell-mode 1))))
-
-
-;; Add some configs to enable exporting in beammer:
-;; Remember to install latex with beamer 
-(require 'ox-latex)
-;; Require org meamer to compile the file
+(use-package company-graphviz-dot)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages '(org-drill-table org-drill graphviz-dot-mode use-package)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 (require 'ox-beamer)
-(add-to-list 'org-latex-classes
-             '("beamer"
-               "\\documentclass\[presentation\]\{beamer\}"
-               ("\\section\{%s\}" . "\\section*\{%s\}")
-               ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
-               ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
+(require 'org-drill)
