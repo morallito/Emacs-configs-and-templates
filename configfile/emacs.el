@@ -1,7 +1,3 @@
-;; Iago Moreira emacs config file
-; V0.0.2 - 16-05-2021
-
-
 (global-display-line-numbers-mode)
 (require 'package)
 (add-to-list 'package-archives
@@ -72,3 +68,16 @@
  )
 (require 'ox-beamer)
 (require 'org-drill)
+
+;; Org drill shortcuts
+
+(require 'org-tempo)
+(tempo-define-template "org-drill-1"
+               '("** Item :drill:\n<QUESTION>\n\n*** Answer\n<ANSWER>")
+               "<1"
+               "Template for and org drill's simple topic")
+(tempo-define-template "org-drill-2"
+               '("** Item :drill:\n:PROPERTIES:\n:DRILL_CARD_TYPE: hide1cloze\n:END:\n\n<QUESTION>\n")
+               "<3"
+               "Template for an org drills' hide1cloze card")
+
