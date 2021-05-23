@@ -1,0 +1,13 @@
+* Plant Uml example
+
+
+#+TITLE: My puml example
+#+BEGIN_SRC plantuml :file output.png
+Alice->Bob: Authentication Request
+note right of Bob: Bob thinks about it
+Bob->Alice: Authentication Response
+#+END_SRC
+
+#+RESULTS:
+[[file:output.png]]
+

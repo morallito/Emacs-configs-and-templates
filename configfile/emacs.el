@@ -81,7 +81,7 @@
                "<2"
                "Template for an org drills' hide1cloze card")
 (tempo-define-template "plant-uml-case"
-               '("#+BEGIN_SRC plantuml :file <out>.txt \n \n #+END_SRC")
+               '("#+BEGIN_SRC plantuml :file <out>.png \n \n #+END_SRC")
                "<pu"
                "Template for pnalt uml")
 
