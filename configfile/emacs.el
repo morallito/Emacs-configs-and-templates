@@ -78,6 +78,10 @@
                "Template for and org drill's simple topic")
 (tempo-define-template "org-drill-2"
                '("** Item :drill:\n:PROPERTIES:\n:DRILL_CARD_TYPE: hide1cloze\n:END:\n\n<QUESTION>\n")
-               "<3"
+               "<2"
                "Template for an org drills' hide1cloze card")
+(tempo-define-template "plant-uml-case"
+               '("#+BEGIN_SRC plantuml :file <out>.txt \n \n #+END_SRC")
+               "<pu"
+               "Template for pnalt uml")
 
